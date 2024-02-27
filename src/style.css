@@ -105,3 +105,23 @@ header{
     right: 20px;
     font-size: 24px;
   }
+
+  .item-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item-details-image{
+    width: 50%;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 100%;
+    transition: 0.5s;
+    box-shadow: 1px 1px 20px black;
+  }
+
+  .item-details-image:hover{
+    border-radius: 10%;
+  }
