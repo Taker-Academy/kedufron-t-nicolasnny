@@ -125,3 +125,22 @@ header{
   .item-details-image:hover{
     border-radius: 10%;
   }
+
+  .add-to-cart-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #252525;
+    border-style: none;
+    width: 110%;
+  }
+
+  .add-to-cart-btn:hover{
+    background-color: #303030;
+    border-radius: 10%;
+  }
+
+  .add-to-cart-btn > p{
+    color: white;
+    margin-left: 5%;
+  }
