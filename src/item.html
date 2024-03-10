@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Description de l'article</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 id="itemName"></h1>
+  </header>
+  
+  <main class="content">
+    <article class="item">
+      <div class="item-img" id="itemImage"></div>
+      <div class="item-description" id="itemDescription"></div>
+      <div class="item-price" id="itemPrice"></div>
+      <button id="addToCartBtn">Ajouter au Panier</button>
+    </article>
+  </main>
+
+  <aside class="cart-container">
+    <h2>Panier</h2>
+    <ul class="cart" id="cart"></ul>
+    <button id="checkoutBtn">Valider la commande</button>
+  </aside>
+
+  <footer class="confirmation-container" id="confirmation">
+    <h2>Confirmation</h2>
+    <p id="confirmationText"></p>
+  </footer>
+
+  <script src="item.js"></script>
+</body>
+</html>
