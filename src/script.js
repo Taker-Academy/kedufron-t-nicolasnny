@@ -1,8 +1,6 @@
-import { updateCartDisplay, saveCartToLocalStorage } from './cart.js';
 document.addEventListener('DOMContentLoaded', function() {
   const itemsContainer = document.getElementById('items');
   const cartContainer = document.querySelector('.cart');
-  const cartBtn = document.getElementById('cart-button');
   const checkoutBtn = document.getElementById('checkoutBtn');
   const confirmationContainer = document.getElementById('confirmation');
   const confirmationText = document.getElementById('confirmationText');
@@ -40,6 +38,44 @@ document.addEventListener('DOMContentLoaded', function() {
       itemDiv.appendChild(name);
       itemDiv.appendChild(price);
       return itemDiv;
+  }
+
+  function updateCartDisplay() {
+      cartContainer.innerHTML = '';
+      cartItems.forEach(item => {
+          if (item.quantity > 0) {
+              const cartItemElement = document.createElement('li');
+              cartItemElement.classList.add('cart-item');
+              const increaseBtn = document.createElement('button');
+              increaseBtn.textContent = '+';
+              increaseBtn.addEventListener('click', () => {
+                  item.quantity++;
+                  updateCartDisplay();
+                  saveCartToLocalStorage();
+              });
+              const quantityText = document.createElement('span');
+              quantityText.textContent = `${item.quantity}`;
+              const decreaseBtn = document.createElement('button');
+              decreaseBtn.textContent = '-';
+              decreaseBtn.addEventListener('click', () => {
+                  item.quantity--;
+                  if (item.quantity === 0) {
+                      cartItems = cartItems.filter(cartItem => cartItem._id !== item._id);
+                  }
+                  updateCartDisplay();
+                  saveCartToLocalStorage();
+              });
+              cartItemElement.appendChild(document.createTextNode(`${item.name}`));
+              cartItemElement.appendChild(decreaseBtn);
+              cartItemElement.appendChild(quantityText);
+              cartItemElement.appendChild(increaseBtn);
+              cartContainer.appendChild(cartItemElement);
+          }
+      });
+  }
+
+  function saveCartToLocalStorage() {
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }
 
   checkoutBtn.addEventListener('click', () => {
